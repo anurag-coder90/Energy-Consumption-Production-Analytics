@@ -1,56 +1,253 @@
-Dataset/SQL Schema: This schema includes five tables named as Customers, Energy_Consumption, Energy_Production, Production_Plants and Sustainability_Initiatives and all are explained below. Learners are advised to describe all the tables and have a brief understanding of all the tables. 
+# Data Dictionary – Energy Consumption & Production Analytics
 
-1. Customers Table:
+## 1. Dataset Overview
 
-This table allows the company to identify, categorize, and track its customer base for various business operations and analysis.
+This dataset contains five relational tables designed to support the analysis of energy consumption, energy production, customer behavior, production plant performance, and sustainability initiatives.
 
-customer_id (INT PRIMARY KEY): Unique identifier for each customer.
-name (VARCHAR(255)): Customer's name.
-address (VARCHAR(255)): Customer's address.
-segment (VARCHAR(50)): Customer segment (e.g., residential, commercial, industrial).
-join_date (DATE): Date the customer joined the energy company.
+The dataset provides a structured view of energy-related business operations and enables analysis across customer segments, energy types, production facilities, operational costs, carbon emissions, and sustainability performance.
 
-2. Energy_Consumption Table:
+### Database Tables
 
-This table provides information on each consumption record to a specific customer, allowing for detailed tracking and analysis of energy usage patterns and expenses over time.
+| Table Name                 | Description                                                                         | Primary Key    |
+| -------------------------- | ----------------------------------------------------------------------------------- | -------------- |
+| Customers                  | Stores customer details and customer segmentation information.                      | customer_id    |
+| Energy_Consumption         | Records customer-level energy consumption and associated costs.                     | consumption_id |
+| Energy_Production          | Stores energy production records, production costs, and carbon emissions.           | production_id  |
+| Production_Plants          | Contains production plant details, locations, capacities, and primary energy types. | plant_id       |
+| Sustainability_Initiatives | Tracks sustainability initiatives, budgets, energy savings, and carbon reductions.  | initiative_id  |
 
-consumption_id (INT PRIMARY KEY): Unique identifier for each consumption record.
-customer_id (INT FOREIGN KEY REFERENCES Customers(customer_id)): Links consumption to a customer.
-date (DATE): Date of energy consumption.
-energy_type (VARCHAR(50)): Type of energy consumed (e.g., electricity, gas).
-amount_kwh (DECIMAL(10, 2)): Amount of energy consumed in kilowatt-hours (kWh).
-cost_usd (DECIMAL(10, 2)): Cost of energy consumed in USD.
+---
 
-3. Energy_Production Table:
+## 2. Table-Level Data Dictionary
 
-This table records data on energy production, including unique identifiers for each production record, the production plant associated with the production, the date of production, the type and amount of energy produced, the cost of production, and the carbon emissions generated.
+### 2.1 Customers
 
-production_id (INT PRIMARY KEY): Unique identifier for each production record.
-production_plant_id (INT FOREIGN KEY REFERENCES Production_Plants(plant_id)): Links production to a production plant.
-date (DATE): Date of energy production.
-energy_type (VARCHAR(50)): Type of energy produced (e.g., solar, wind, coal).
-amount_kwh (DECIMAL(10, 2)): Amount of energy produced in kilowatt-hours (kWh).
-cost_usd (DECIMAL(10, 2)): Cost of energy production in USD.
-carbon_emission_kg (DECIMAL(10, 2)): Carbon emissions from energy production in kilograms.
+**Table Name:** `Customers`
 
-4. Production_Plants Table:
+**Description:**
 
-This table records the store detailed information about various production plants, each uniquely identified by a primary key. It includes fields for storing the name of the plant, its geographical location, and its maximum production capacity in kilowatt-hours.
+Stores information about the company's customer base, including customer identification, contact location, customer segment, and registration date.
 
-plant_id (INT PRIMARY KEY): Unique identifier for each production plant.
-plant_name (VARCHAR(255)): Name of the production plant.
-location (VARCHAR(255)): Location of the production plant.
-capacity_kwh (DECIMAL(10, 2)): Maximum production capacity in kilowatt-hours (kWh).
-energy_type (VARCHAR(50)): Primary type of energy produced (e.g., solar, wind, coal).
+This table supports customer segmentation, consumption analysis, and customer-level reporting.
 
-5. Sustainability_Initiatives Table:
+| Column Name | Data Type    | Key         | Description                                                        |
+| ----------- | ------------ | ----------- | ------------------------------------------------------------------ |
+| customer_id | INT          | Primary Key | Unique identifier assigned to each customer.                       |
+| name        | VARCHAR(255) | —           | Name of the customer.                                              |
+| address     | VARCHAR(255) | —           | Customer's geographical address.                                   |
+| segment     | VARCHAR(50)  | —           | Customer category, such as residential, commercial, or industrial. |
+| join_date   | DATE         | —           | Date on which the customer joined the energy company.              |
 
-This table tracks sustainability initiatives implemented by the organization. This data allows the company to monitor and manage various environmental and social responsibility efforts over time.
+**Business Applications:**
 
-initiative_id (INT PRIMARY KEY): Unique identifier for each sustainability initiative.
-initiative_name (VARCHAR(255)): Name of the sustainability initiative.
-start_date (DATE): Start date of the initiative.
-end_date (DATE): End date of the initiative.
-budget_usd (DECIMAL(10, 2)): Budget for sustainability initiative. 
-energy_savings_kwh (DECIMAL(10, 2)): Energy savings per initiative. 
-carbon_reduction_kg (DECIMAL(10, 2)): Carbon reduction per initiative.
+* Customer segmentation and profiling.
+* Customer acquisition and registration analysis.
+* Customer-level energy consumption analysis.
+* Comparison of consumption and expenditure across customer segments.
+
+---
+
+### 2.2 Energy_Consumption
+
+**Table Name:** `Energy_Consumption`
+
+**Description:**
+
+Stores individual energy consumption records associated with customers. Each record captures the consumption date, energy type, energy volume, and corresponding cost.
+
+This table supports time-based consumption analysis, expenditure tracking, and customer behavior analysis.
+
+| Column Name    | Data Type     | Key         | Description                                                                                            |
+| -------------- | ------------- | ----------- | ------------------------------------------------------------------------------------------------------ |
+| consumption_id | INT           | Primary Key | Unique identifier for each energy consumption record.                                                  |
+| customer_id    | INT           | Foreign Key | References `Customers.customer_id` and identifies the customer associated with the consumption record. |
+| date           | DATE          | —           | Date on which the energy was consumed.                                                                 |
+| energy_type    | VARCHAR(50)   | —           | Type of energy consumed, such as electricity or gas.                                                   |
+| amount_kwh     | DECIMAL(10,2) | —           | Quantity of energy consumed, measured in kilowatt-hours (kWh).                                         |
+| cost_usd       | DECIMAL(10,2) | —           | Cost associated with the consumption record, measured in US dollars (USD).                             |
+
+**Business Applications:**
+
+* Daily and monthly energy consumption analysis.
+* Customer-level consumption and expenditure tracking.
+* Customer segment comparisons.
+* Month-over-month consumption trend analysis.
+* Identification of customers with significant consumption changes.
+
+---
+
+### 2.3 Energy_Production
+
+**Table Name:** `Energy_Production`
+
+**Description:**
+
+Stores energy production records generated by individual production plants. Each record captures the production date, energy type, quantity produced, production cost, and associated carbon emissions.
+
+This table supports production efficiency analysis, cost monitoring, plant performance evaluation, and environmental impact assessment.
+
+| Column Name         | Data Type     | Key         | Description                                                                                  |
+| ------------------- | ------------- | ----------- | -------------------------------------------------------------------------------------------- |
+| production_id       | INT           | Primary Key | Unique identifier for each energy production record.                                         |
+| production_plant_id | INT           | Foreign Key | References `Production_Plants.plant_id` and identifies the plant responsible for production. |
+| date                | DATE          | —           | Date on which the energy was produced.                                                       |
+| energy_type         | VARCHAR(50)   | —           | Type of energy produced, such as solar, wind, coal, or gas.                                  |
+| amount_kwh          | DECIMAL(10,2) | —           | Quantity of energy produced, measured in kilowatt-hours (kWh).                               |
+| cost_usd            | DECIMAL(10,2) | —           | Cost associated with producing the recorded energy, measured in US dollars (USD).            |
+| carbon_emission_kg  | DECIMAL(10,2) | —           | Carbon emissions generated during production, measured in kilograms (kg).                    |
+
+**Business Applications:**
+
+* Energy production analysis by plant and energy type.
+* Production cost and cost-per-kWh analysis.
+* Plant performance ranking.
+* Carbon emissions monitoring.
+* Production efficiency and capacity utilization analysis.
+
+---
+
+### 2.4 Production_Plants
+
+**Table Name:** `Production_Plants`
+
+**Description:**
+
+Stores information about the company's energy production facilities, including plant identification, name, geographical location, maximum production capacity, and primary energy type.
+
+This table provides reference information for evaluating production performance and comparing operational efficiency across plants.
+
+| Column Name  | Data Type     | Key         | Description                                                                 |
+| ------------ | ------------- | ----------- | --------------------------------------------------------------------------- |
+| plant_id     | INT           | Primary Key | Unique identifier assigned to each production plant.                        |
+| plant_name   | VARCHAR(255)  | —           | Name of the energy production plant.                                        |
+| location     | VARCHAR(255)  | —           | Geographical location of the production plant.                              |
+| capacity_kwh | DECIMAL(10,2) | —           | Maximum production capacity of the plant, measured in kilowatt-hours (kWh). |
+| energy_type  | VARCHAR(50)   | —           | Primary type of energy produced by the plant, such as solar, wind, or coal. |
+
+**Business Applications:**
+
+* Production plant identification and comparison.
+* Production capacity monitoring.
+* Plant-level production analysis.
+* Capacity utilization calculations.
+* Comparison of production performance across energy types.
+
+---
+
+### 2.5 Sustainability_Initiatives
+
+**Table Name:** `Sustainability_Initiatives`
+
+**Description:**
+
+Stores information about sustainability initiatives implemented by the organization. The table tracks initiative timelines, allocated budgets, energy savings, and carbon reduction outcomes.
+
+This table supports sustainability performance monitoring and evaluation of environmental initiatives.
+
+| Column Name         | Data Type     | Key         | Description                                                                          |
+| ------------------- | ------------- | ----------- | ------------------------------------------------------------------------------------ |
+| initiative_id       | INT           | Primary Key | Unique identifier assigned to each sustainability initiative.                        |
+| initiative_name     | VARCHAR(255)  | —           | Name or title of the sustainability initiative.                                      |
+| start_date          | DATE          | —           | Date on which the initiative commenced.                                              |
+| end_date            | DATE          | —           | Date on which the initiative ended or is scheduled to end.                           |
+| budget_usd          | DECIMAL(10,2) | —           | Budget allocated to the sustainability initiative, measured in US dollars (USD).     |
+| energy_savings_kwh  | DECIMAL(10,2) | —           | Energy savings attributed to the initiative, measured in kilowatt-hours (kWh).       |
+| carbon_reduction_kg | DECIMAL(10,2) | —           | Carbon emissions reduction attributed to the initiative, measured in kilograms (kg). |
+
+**Business Applications:**
+
+* Sustainability initiative performance monitoring.
+* Energy savings comparisons across initiatives.
+* Carbon reduction analysis.
+* Budget allocation and utilization analysis.
+* Initiative duration and timeline analysis.
+* Ranking initiatives based on energy savings and carbon reduction.
+
+---
+
+## 3. Database Relationships
+
+The database contains two defined foreign key relationships connecting the customer and production data.
+
+| Parent Table      | Parent Column | Child Table        | Child Column        | Relationship |
+| ----------------- | ------------- | ------------------ | ------------------- | ------------ |
+| Customers         | customer_id   | Energy_Consumption | customer_id         | One-to-Many  |
+| Production_Plants | plant_id      | Energy_Production  | production_plant_id | One-to-Many  |
+
+### Relationship Explanation
+
+**1. Customers → Energy_Consumption**
+
+* Each customer is uniquely identified by `customer_id`.
+* A customer can have multiple energy consumption records.
+* Each consumption record is associated with a customer through the foreign key `customer_id`.
+
+**2. Production_Plants → Energy_Production**
+
+* Each production plant is uniquely identified by `plant_id`.
+* A production plant can generate multiple energy production records.
+* Each production record is associated with a production plant through `production_plant_id`.
+
+**3. Sustainability_Initiatives**
+
+* The Sustainability_Initiatives table is maintained independently.
+* No direct foreign key relationship with the other four tables is defined in the provided schema.
+* Its metrics are therefore analyzed separately rather than being directly attributed to individual customers or production plants.
+
+---
+
+## 4. Units of Measurement and Data Conventions
+
+The following units and conventions are used throughout the dataset.
+
+| Metric              | Unit       | Description                                                                                                                      |
+| ------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Energy Consumption  | kWh        | Quantity of energy consumed by customers.                                                                                        |
+| Energy Production   | kWh        | Quantity of energy generated by production plants.                                                                               |
+| Production Capacity | kWh        | Maximum production capacity recorded for a plant; the applicable time period must be established before calculating utilization. |
+| Energy Savings      | kWh        | Quantity of energy saved through sustainability initiatives.                                                                     |
+| Energy Cost         | USD        | Cost associated with energy consumption or production.                                                                           |
+| Initiative Budget   | USD        | Budget allocated to sustainability initiatives.                                                                                  |
+| Carbon Emissions    | kg         | Carbon emissions generated during energy production.                                                                             |
+| Carbon Reduction    | kg         | Carbon emissions reduction attributed to sustainability initiatives.                                                             |
+| Dates               | YYYY-MM-DD | Standard date representation.                                                                                                    |
+
+### Naming and Calculation Conventions
+
+* All energy quantities are expressed in kilowatt-hours (kWh).
+* Monetary values are expressed in US dollars (USD).
+* Carbon emissions and reductions are expressed in kilograms (kg).
+* Customer segments include categories such as residential, commercial, and industrial.
+* Energy types may include electricity, gas, solar, wind, and coal, depending on the table.
+* Cost-per-kWh metrics are calculated by dividing total cost by total energy volume.
+* Carbon emissions per kWh are calculated by dividing total carbon emissions by total energy production.
+
+---
+
+## 5. Important Data and Analytical Assumptions
+
+1. The dataset is synthetic and is intended for learning, analytical practice, and portfolio demonstration.
+2. The `customer_id` and `plant_id` columns uniquely identify customers and production plants, respectively.
+3. The `Energy_Consumption` and `Energy_Production` tables contain transactional or periodic records that can be aggregated for monthly and overall analysis.
+4. The `capacity_kwh` field requires a clearly defined time basis before calculating capacity utilization. If it represents daily capacity, available capacity must be calculated over the applicable number of operating days.
+5. Sustainability initiative metrics are analyzed independently because no direct relationship with the other tables is defined in the provided schema.
+6. Energy types listed in the tables are illustrative categories and may differ between consumption and production records.
+7. The dataset does not necessarily represent actual industry operating conditions, pricing structures, production patterns, or sustainability outcomes.
+
+---
+
+## 6. Dataset Limitations
+
+* The dataset does not represent actual customer or energy company records.
+* Synthetic data may not accurately reflect real-world consumption seasonality or production variability.
+* The schema does not include customer billing cycles, plant operating schedules, or detailed energy pricing structures.
+* The Sustainability_Initiatives table does not contain a defined relationship to individual production plants or customer records.
+* Additional operational information may be required for more advanced financial, operational, and environmental analysis.
+
+---
+
+## 7. Purpose of This Data Dictionary
+
+This document serves as a reference guide to the database structure, table definitions, column descriptions, relationships, measurement units, and analytical assumptions used in the Energy Consumption & Production Analytics project.
+
+It is intended to help users understand the underlying dataset before exploring the SQL queries and Power BI dashboards included in this repository.
