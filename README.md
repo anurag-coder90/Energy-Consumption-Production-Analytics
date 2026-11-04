@@ -195,15 +195,16 @@ An interactive Power BI report was developed to present the analytical findings 
 
 #### 1. Customer Consumption Overview
 
-![Energy Consumption Dashboard](Dashboard_Screenshots/Customer_Consumption.png)
+![Energy Consumption Overview](Screenshots/Energy_Consumption_Overview.png)
+
 
 #### 2. Energy Production Overview
 
-![Energy Production Dashboard](Dashboard_Screenshots/Energy_Production.png)
+![Energy Production Overview](Screenshots/Energy_Production_Overview.png)
 
 #### 3. Sustainability Performance
 
-![Sustainability Performance Dashboard](Dashboard_Screenshots/Sustainability_Performance.png)
+![Sustainability Performance Overview](Screenshots/Sustainability_Initiatives_Analysis.png)
 
 ### 1. Customer Consumption Analysis
 
