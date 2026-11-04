@@ -418,11 +418,12 @@ Energy-Consumption-Production-Analytics/
 │   ├── Sustainability_Performance.png
 │   └── Data_Model.png
 │
-└── Documentation/
+├── Documentation/
 │   ├── Business_Questions.md
 │   ├── Data_Dictionary.md
 │   └── Methodology_and_Assumptions.md
-
+│
+└── License
 ```
 
 ---
