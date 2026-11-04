@@ -191,6 +191,20 @@ Therefore, the observed improvement is attributed primarily to partition elimina
 
 An interactive Power BI report was developed to present the analytical findings through three dedicated dashboard pages.
 
+### Dashboard Previews
+
+#### 1. Customer Consumption Overview
+
+![Energy Consumption Dashboard](Dashboard_Screenshots/Customer_Consumption.png)
+
+#### 2. Energy Production Overview
+
+![Energy Production Dashboard](Dashboard_Screenshots/Energy_Production.png)
+
+#### 3. Sustainability Performance
+
+![Sustainability Performance Dashboard](Dashboard_Screenshots/Sustainability_Performance.png)
+
 ### 1. Customer Consumption Analysis
 
 Focuses on customer consumption behavior and expenditure patterns.
@@ -241,12 +255,12 @@ The following insights are derived from the results displayed in the dashboards 
 
 **Overall Performance**
 
-| KPI                               |   Observed Value |
-| --------------------------------- | ---------------: |
-| Total Energy Consumption          | 7.20 Million kWh |
-| Total Customers                   |              100 |
-| Average Consumption per Customer  |       72.02K kWh |
-| Year-over-Year Consumption Change |          +50.89% |
+| KPI                              | Observed Value |
+| -------------------------------- | -------------: |
+| Total Customers                  |            100 |
+| Total Energy Consumption         |      7.20M kWh |
+| Average Consumption per Customer |     72.02K kWh |
+| Total Consumption Cost           |       $670.83K |
 
 **Customer Segment Analysis**
 
@@ -260,8 +274,7 @@ The following insights are derived from the results displayed in the dashboards 
 
 * **Industrial customers dominate energy demand:** Industrial customers account for approximately 62.79% of total energy consumption, making this segment the largest contributor to overall demand.
 * **Commercial consumption represents the second-largest segment:** Commercial customers contribute approximately 27% of total consumption, while residential customers account for 10.21%.
-* **Significant year-over-year growth:** The dashboard reports a 50.89% increase in energy consumption year over year, indicating a substantial change in demand during the reporting period.
-* **Customer-level variations:** The customer analysis highlights differences in total consumption, expenditure, and year-over-year consumption changes, helping identify customers with comparatively high energy demand.
+* **Customer-level variations:** The customer analysis highlights differences in total consumption and expenditure, helping identify customers with comparatively high energy demand and changes in their consumption patterns.
 
 **Potential Business Recommendations**
 
@@ -275,13 +288,13 @@ The following insights are derived from the results displayed in the dashboards 
 
 **Overall Production Performance**
 
-| KPI                              |   Observed Value |
-| -------------------------------- | ---------------: |
-| Total Energy Production          | 8.90 Million kWh |
-| Year-over-Year Production Change |          +48.85% |
-| Total Production Cost            |         $860.43K |
-| Total Carbon Emissions           |  2.54 Million kg |
-| Capacity Utilization %           |           13.79% |
+| KPI                     | Observed Value |
+| ----------------------- | -------------: |
+| Total Production Plants |             10 |
+| Total Energy Production |      8.90M kWh |
+| Capacity Utilization    |         13.79% |
+| Total Production Cost   |       $860.43K |
+| Total Carbon Emissions  |       2.54M kg |
 
 **Energy Production by Type**
 
@@ -297,9 +310,9 @@ The following insights are derived from the results displayed in the dashboards 
 * **Hydro is the leading energy source:** Hydro contributes approximately 47.23% of total production, making it the largest energy source in the dataset.
 * **Coal and gas have comparable production contributions:** Coal accounts for approximately 23.70% of production, while gas contributes 23.51%.
 * **Wind has the smallest production contribution:** Wind represents approximately 5.55% of total energy production.
-* **Production growth:** The dashboard reports a 48.85% year-over-year increase in energy production, indicating substantial growth during the reporting period.
+* **Month-over-month production variations:** The highest month-over-month production change was recorded in March 2024 (+31.45%), while the lowest was recorded in April 2024 (-23.60%), indicating notable variations in energy generation.
 * **Production and environmental monitoring:** Total production of 8.90M kWh is associated with 2.54M kg of recorded carbon emissions, highlighting the importance of evaluating production volumes alongside environmental impact.
-* **Plant-level production comparison:** The dashboard compares production across individual plants and energy types, allowing differences in production output to be examined.
+* **Plant-level production comparison:** The dashboard compares production across individual plants and energy types, allowing differences in production output and capacity utilization to be examined.
 
 **Potential Business Recommendations**
 
@@ -364,14 +377,14 @@ The following insights are derived from the results displayed in the dashboards 
 
 The combined analysis of customer consumption, energy production, and sustainability performance provides a broader view of the organization's operations.
 
-| Business Area         | Analytical Finding                                           | Potential Business Application                           |
-| --------------------- | ------------------------------------------------------------ | -------------------------------------------------------- |
-| Customer Demand       | Industrial customers contribute 62.79% of total consumption. | Customer segmentation and demand management.             |
-| Energy Production     | Hydro accounts for 47.23% of total production.               | Production mix monitoring and energy portfolio analysis. |
-| Production Growth     | Energy production increased by 48.85% year over year.        | Production planning and capacity monitoring.             |
-| Environmental Impact  | Total recorded carbon emissions are 2.54M kg.                | Environmental performance monitoring.                    |
-| Sustainability        | 20 initiatives report 858.37K kWh in energy savings.         | Sustainability performance evaluation.                   |
-| Investment Monitoring | Total sustainability budget is $10.04M.                      | Budget and environmental outcome comparisons.            |
+| Business Area          | Analytical Finding                                                 | Potential Business Application                           |
+| ---------------------- | ------------------------------------------------------------------ | -------------------------------------------------------- |
+| Customer Demand        | Industrial customers contribute 62.79% of total consumption.       | Customer segmentation and demand management.             |
+| Energy Production      | Hydro accounts for 47.23% of total production.                     | Production mix monitoring and energy portfolio analysis. |
+| Production Variability | Production change ranged from +31.45% to -23.60% month over month. | Production planning and capacity monitoring.             |
+| Environmental Impact   | Total recorded carbon emissions are 2.54M kg.                      | Environmental performance monitoring.                    |
+| Sustainability         | 20 initiatives report 858.37K kWh in energy savings.               | Sustainability performance evaluation.                   |
+| Investment Monitoring  | Total sustainability budget is $10.04M.                            | Budget and environmental outcome comparisons.            |
 
 **Overall Business Perspective**
 
@@ -380,7 +393,6 @@ The analysis demonstrates how customer demand, energy generation, operational co
 By combining SQL-based analysis with interactive Power BI reporting, the project illustrates how structured data can be transformed into measurable performance indicators and actionable business questions.
 
 **Data Disclaimer:** All numerical findings are based on the synthetic dataset used in this project. They demonstrate analytical capabilities and potential business applications rather than actual company performance or verified industry trends.
-
 
 ---
 
